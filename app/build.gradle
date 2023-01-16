@@ -1,0 +1,73 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+}
+
+android {
+    namespace 'com.example.unlimint'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.unlimint"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "String", "SERVER_REMOTE_URL", '"https://geek-jokes.sameerkumar.website/"'
+        }
+        release {
+            buildConfigField "String", "SERVER_REMOTE_URL", '"https://geek-jokes.sameerkumar.website/"'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.20'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
+
+    implementation 'androidx.work:work-runtime:2.7.1'
+    //koin
+    // Koin main features for Android (Scope,ViewModel ...)
+    implementation "io.insert-koin:koin-android:3.3.2"
+    // Koin Core features
+    implementation "io.insert-koin:koin-core:3.3.2"
+// Koin for Jetpack WorkManager
+    implementation "io.insert-koin:koin-androidx-workmanager:3.3.2"
+
+    //ViewModel
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.6.0-alpha04'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
+}
