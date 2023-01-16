@@ -14,7 +14,6 @@ private fun httpInterceptor() = HttpLoggingInterceptor().apply {
 
 private fun basicOkHttpClient() = OkHttpClient.Builder().addInterceptor(httpInterceptor()).build()
 
-
 fun createBasicAuthService(): BasicApiService {
     val retrofit = Retrofit.Builder()
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
